@@ -32,8 +32,8 @@
   import './assets/main.scss'
   import Vue from 'vue'
   import Vuetify from 'vuetify'
-  import Notifications from 'vue-notification'
-  Vue.use(Notification)
+  // import Notifications from 'vue-notification'
+  // Vue.use(Notification)
   Vue.use(Vuetify, {
     theme: {
       primary: '#ffcc05',

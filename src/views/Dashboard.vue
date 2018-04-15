@@ -48,19 +48,16 @@ export default {
     methods: {
         saveAll () {
             let count = 0
-            for (let i = 0; i < this.info.movies.length; i++) {
-                let temp = this.info.movies[i]
-                MovieService.create(temp).then((response) => {
-                    count++
-                })
-            }
-            if (count === this.info.movies.length) {
-                this.$notify({
-                    group: 'foo',
-                    title: 'Success',
-                    text: 'Save Successfully!'
-                    });
-            }
+            MovieService.saveAll(this.info.movies).then((response) => {
+                console.log(response)
+            })
+            // if (count === this.info.movies.length) {
+            //     this.$notify({
+            //         group: 'foo',
+            //         title: 'Success',
+            //         text: 'Save Successfully!'
+            //         });
+            // }
         }
     }
 }

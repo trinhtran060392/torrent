@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Movie = new Schema({
+    "id": { type: Number },
     "url": { type: String },
     "imdb_code": { type: String },
     "title": { type: String },

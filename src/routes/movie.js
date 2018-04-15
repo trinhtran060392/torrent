@@ -15,6 +15,20 @@ movieRouters.route('/add').post((req, res, next) => {
     });
   });
 
+movieRouters.route('/addall').post((req, res, next) => {
+  let data = req.body
+  let count = 0
+  for (let i = 0; i < data.length; i++) {
+    let item = new Movie(data[i])
+    item.save().then((item => {
+      count++
+      if (count === data.length) {
+        res.status(200).send('save all ok !')
+      }
+    }))
+  }
+})
+
 // Defined get data(index or listing) route
 movieRouters.route('/').get(function (req, res) {
     console.log('get movie list');
