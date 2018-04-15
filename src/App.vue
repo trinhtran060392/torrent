@@ -21,6 +21,28 @@
   </div>
 </template>
 
+<script>
+  
+  import VueAxios from 'vue-axios';
+  import axios from 'axios';
+
+  Vue.use(VueAxios, axios);
+
+  import './assets/main.scss'
+  import Vue from 'vue'
+  import Vuetify from 'vuetify'
+  Vue.use(Vuetify, {
+    theme: {
+      primary: '#ffcc05',
+      secondary: '#b0bec5',
+      accent: '#8c9eff',
+      error: '#b71c1c'
+    }
+  })
+  export default {
+
+  }
+</script>
 <style lang="stylus">
 body
   font-family -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;

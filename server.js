@@ -102,6 +102,7 @@ function render (req, res) {
     url: req.url
   }
   renderer.renderToString(context, (err, html) => {
+    console.log(context, html, err, 'reder to string')
     if (err) {
       return handleError(err)
     }
@@ -117,6 +118,28 @@ app.get('*', isProd ? render : (req, res) => {
 })
 
 const port = process.env.PORT || 8080
-app.listen(port, () => {
-  console.log(`server started at localhost:${port}`)
-})
+
+const morgan = require('morgan');
+  bodyParser = require('body-parser'),
+  cors = require('cors'),
+  mongoose = require('mongoose'),
+  { DB } = require('./src/config/DB'),
+  movieRouters = require('./src/routes/movie');
+
+mongoose.Promise = global.Promise;
+mongoose.connect(DB)
+  .then(() => console.log('Db is conencted'))
+  .catch(err => console.error(err));
+
+// middlewares
+app.use(bodyParser.json());
+app.use(morgan('dev'));
+app.use(cors());
+
+// routes
+app.use('/movies', movieRouters);
+
+// start the server
+var server = app.listen(port, function(){
+  console.log('Listening on port ' + port);
+});
