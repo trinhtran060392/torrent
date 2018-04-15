@@ -98,11 +98,6 @@ a
   display inline-block
   vertical-align middle
 
-.view
-  max-width 800px
-  margin 0 auto
-  position relative
-
 .fade-enter-active, .fade-leave-active
   transition all .2s ease
 
