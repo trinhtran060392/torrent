@@ -33,6 +33,7 @@ export default {
         'info.page_number' (to, from) {
             console.log(to)
             this.$router.push({path: `/movie/${to}`})
+            location.reload();
         }
     }
 }
