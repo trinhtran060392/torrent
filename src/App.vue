@@ -39,6 +39,7 @@
       error: '#b71c1c'
     }
   })
+  
   export default {
 
   }

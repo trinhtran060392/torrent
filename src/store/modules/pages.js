@@ -14,8 +14,8 @@ const getters = {
 // actions
 const actions = {
   
-  getMovies ({ commit }) {
-    return MovieService.get(1, 24).then((response) => {
+  getMovies ({ commit }, page) {
+    return MovieService.get(page, Constant.numberPerPage).then((response) => {
       let result = response.data.data
       result.totalPage = Math.ceil(result.movie_count / Constant.numberPerPage)
       commit(types.GET_MOVIES, result)

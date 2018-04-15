@@ -11,8 +11,8 @@ export function createRouter () {
     fallback: false,
     scrollBehavior: () => ({ y: 0 }),
     routes: [
-      { path: '/', redirect: '/movie' },
-      { path: '/movie', component: Dashboard}
+      { path: '/', redirect: '/movie/1' },
+      { path: '/movie/:id', component: Dashboard}
     ]
   })
 }

@@ -10,6 +10,7 @@ document.body.appendChild(bar.$el)
 // a global mixin that calls `asyncData` when a route component's params change
 Vue.mixin({
   beforeRouteUpdate (to, from, next) {
+    console.log(1234556, to)
     const { asyncData } = this.$options
     if (asyncData) {
       asyncData({

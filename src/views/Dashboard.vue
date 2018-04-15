@@ -26,8 +26,14 @@ export default {
             return this.$store.getters.info
         }
     },
-    asyncData ({ store, route }) {
-        return store.dispatch('getMovies')
+    asyncData ({ store, route: { params: { id }} }) {
+        return store.dispatch('getMovies', id)
+    },
+    watch: {
+        'info.page_number' (to, from) {
+            console.log(to)
+            this.$router.push({path: `/movie/${to}`})
+        }
     }
 }
 </script>
