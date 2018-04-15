@@ -20,11 +20,18 @@ body {
     background: $dark !important;
 }
 .pagination__item {
-    background-color: $white;
+    background-color: $gray;
     &.pagination__item--active {
         background: $yellow;
+    }
+    &:hover {
+        background: $white;
     }
 }
 .total {
     color: $yellow;
+}
+.btn__content {
+    background-color: $yellow;
+    color: $black;
 }

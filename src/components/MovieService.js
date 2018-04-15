@@ -4,12 +4,16 @@ export default new Vue({
     methods: {
         create (movie) {
             let uri = `${Constant.api}movies/add`
-            console.log(movie, uri)
             return this.axios.post(uri, movie)
         },
         get (page, limit) {
             let uri = `${Constant.entryPoint}list_movies.json?page=${page}&limit=${limit}`
             return this.axios.get(uri)
+        },
+        saveAll (movies) {
+            console.log(movies)
+            let uri = `${Constant.api}movies/addall`
+            return this.axios.post(uri, movies)
         }
     }
 })
