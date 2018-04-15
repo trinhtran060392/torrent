@@ -1,6 +1,9 @@
 <template>
   <div class="dashboard-container">
     <v-container>
+        <h1 class="text-xs-center total">{{info.movie_count}} Movies Found</h1>
+    </v-container>
+    <v-container>
         <div class="text-xs-center">
             <v-pagination :length="info.totalPage" v-model="info.page_number" :total-visible="10"></v-pagination>
         </div>
