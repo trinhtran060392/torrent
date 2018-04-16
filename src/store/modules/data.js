@@ -16,7 +16,6 @@ const actions = {
   
   getData ({ commit }, params) {
     return MovieService.list(params.pageNumber, params.pageSize).then((response) => {
-      console.log(response)
       commit(types.GET_DATA, response.data)
     })
   }

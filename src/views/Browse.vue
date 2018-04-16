@@ -5,11 +5,8 @@
         </v-container>
         <v-container>
             <v-layout row wrap align-items-center>
-                <v-flex xs10 offset-xs1 class="text-xs-center">
+                <v-flex xs12 class="text-xs-center">
                     <v-pagination :length="data.pages" v-model="data.page" :total-visible="10"></v-pagination>
-                </v-flex>
-                <v-flex xs1>
-                    <v-btn @click="saveAll()">Save All</v-btn>
                 </v-flex>
             </v-layout>
             <v-layout row wrap>
