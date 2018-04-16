@@ -11,7 +11,7 @@
             </v-layout>
             <v-layout row wrap>
                 <v-flex xs2 v-for="i in data.docs" :key="i.id">
-                    <div class="vod-content">
+                    <div class="vod-content" @click="openMovieDetail(i)">
                         <img :src="i.medium_cover_image">
                     </div>
                 </v-flex>
@@ -51,6 +51,11 @@ export default {
     watch: {
         'data.page' (to, from) {
             this.$router.push({path: `/browse/${to}/${Constant.pageSize}`})
+        }
+    },
+    methods: {
+        openMovieDetail (i) {
+            this.$router.push({ path: `/browse/${i.slug}` })
         }
     }
 }

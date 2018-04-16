@@ -43,6 +43,13 @@ movieRouters.route('/').get((req, res) => {
     })
 });
 
+movieRouters.route('/movie/:title').get(function (req, res) {
+  var title = req.params.title;
+  Movie.find({slug: title}, function (err, item){
+      res.json(item);
+  });
+});
+
 // Defined delete | remove | destroy route
 movieRouters.route('/delete/:id').get(function (req, res) {
     Movie.findByIdAndRemove({_id: req.params.id}, function(err, item){

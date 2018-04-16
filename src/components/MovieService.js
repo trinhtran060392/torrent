@@ -18,6 +18,10 @@ export default new Vue({
         list (pageNumber, pageSize) {
             let uri = `${Constant.api}movies/${pageNumber}/${pageSize}`
             return this.axios.get(uri)
+        },
+        get (title) {
+            let uri = `${Constant.api}movies/movie/${title}`
+            return this.axios.get(uri)
         }
     }
 })
