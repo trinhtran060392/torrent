@@ -14,9 +14,10 @@ const getters = {
 // actions
 const actions = {
   
-  getData ({ commit }) {
-    return MovieService.list().then((response) => {
-        commit(types.GET_DATA, response.data)
+  getData ({ commit }, params) {
+    return MovieService.list(params.pageNumber, params.pageSize).then((response) => {
+      console.log(response)
+      commit(types.GET_DATA, response.data)
     })
   }
 }

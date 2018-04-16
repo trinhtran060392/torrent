@@ -51,4 +51,15 @@ movieRouters.route('/delete/:id').get(function (req, res) {
     });
 });
 
+movieRouters.route('/:pageNumber/:pageSize').get((req, res) => {
+  Movie.count({}, function( err, count){
+    let pageSize = parseInt(req.params.pageSize)
+    let pageNumber = parseInt(req.params.pageNumber)
+    Movie.paginate({}, { page: pageNumber, limit: pageSize }).then((result) => {
+      if (err) res.json(err)
+      else res.json(result) 
+    });
+  })
+})
+
 module.exports = movieRouters;

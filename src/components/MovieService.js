@@ -15,8 +15,8 @@ export default new Vue({
             let uri = `${Constant.api}movies/addall`
             return this.axios.post(uri, movies)
         },
-        list () {
-            let uri = `${Constant.api}movies`
+        list (pageNumber, pageSize) {
+            let uri = `${Constant.api}movies/${pageNumber}/${pageSize}`
             return this.axios.get(uri)
         }
     }
