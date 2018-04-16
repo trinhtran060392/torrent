@@ -27,19 +27,20 @@ movieRouters.route('/addall').post((req, res, next) => {
       }
     }))
   }
-})
+});
 
-// Defined get data(index or listing) route
-movieRouters.route('/').get(function (req, res) {
-    console.log('get movie list');
-    Movie.find(function (err, items){
-    if(err){
-      console.log(err);
-    }
-    else {
-      res.json(items);
-    }
-  });
+movieRouters.route('/').get((req, res) => {
+  console.log('get movie list');
+    Movie.find((err, items) => {
+      if(err){
+        res.status(200).send('failed')
+        console.log(err);
+      }
+      else {
+        console.log(items.length);
+        res.json(items);
+      }
+    })
 });
 
 // Defined delete | remove | destroy route

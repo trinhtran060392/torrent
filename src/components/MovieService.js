@@ -14,6 +14,10 @@ export default new Vue({
             console.log(movies)
             let uri = `${Constant.api}movies/addall`
             return this.axios.post(uri, movies)
+        },
+        list () {
+            let uri = `${Constant.api}movies`
+            return this.axios.get(uri)
         }
     }
 })

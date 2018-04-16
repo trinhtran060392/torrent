@@ -85,6 +85,7 @@ function render (req, res) {
   res.setHeader("Server", serverInfo)
 
   const handleError = err => {
+    console.log(err.url, '11111111')
     if (err.url) {
       res.redirect(err.url)
     } else if(err.code === 404) {
@@ -92,8 +93,6 @@ function render (req, res) {
     } else {
       // Render Error Page or Redirect
       res.status(500).send('500 | Internal Server Error')
-      console.error(`error during render : ${req.url}`)
-      console.error(err.stack)
     }
   }
 
@@ -102,7 +101,6 @@ function render (req, res) {
     url: req.url
   }
   renderer.renderToString(context, (err, html) => {
-    console.log(context, html, err, 'reder to string')
     if (err) {
       return handleError(err)
     }
@@ -119,27 +117,6 @@ app.get('*', isProd ? render : (req, res) => {
 
 const port = process.env.PORT || 8080
 
-const morgan = require('morgan');
-  bodyParser = require('body-parser'),
-  cors = require('cors'),
-  mongoose = require('mongoose'),
-  { DB } = require('./src/config/DB'),
-  movieRouters = require('./src/routes/movie');
-
-mongoose.Promise = global.Promise;
-mongoose.connect(DB)
-  .then(() => console.log('Db is conencted'))
-  .catch(err => console.error(err));
-
-// middlewares
-app.use(bodyParser.json());
-app.use(morgan('dev'));
-app.use(cors());
-
-// routes
-app.use('/movies', movieRouters);
-
-// start the server
 var server = app.listen(port, function(){
   console.log('Listening on port ' + port);
 });
