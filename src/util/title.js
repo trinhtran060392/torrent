@@ -19,6 +19,7 @@ const serverTitleMixin = {
 const clientTitleMixin = {
   mounted () {
     const title = getTitle(this)
+    console.log(this, 'this is title')
     if (title) {
       document.title = `Vue HN 2.0 | ${title}`
     }

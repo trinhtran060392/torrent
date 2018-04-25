@@ -23,7 +23,7 @@ const actions = {
   },
   getMovie ({ commit }, title) {
     return MovieService.get(title).then((response) => {
-      commit(types.MOVIE, response.data[0])
+      commit(types.MOVIE, response)
     })
   }
 }
