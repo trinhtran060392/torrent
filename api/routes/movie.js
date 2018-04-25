@@ -50,6 +50,14 @@ movieRouters.route('/movie/:title').get(function (req, res) {
   });
 });
 
+movieRouters.route('/relate/:genre').get(function (req, res) {
+  var genre = req.params.genre;
+  console.log(genre, '------------------');
+  Movie.find({genres: genre}).limit(6).exec(function (err, items) {
+    res.json(items);
+  })
+});
+
 // Defined delete | remove | destroy route
 movieRouters.route('/delete/:id').get(function (req, res) {
     Movie.findByIdAndRemove({_id: req.params.id}, function(err, item){

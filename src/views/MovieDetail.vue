@@ -81,6 +81,18 @@
               </v-flex>
               <v-flex xs5></v-flex>
             </v-layout>
+            <v-layout row wrap>
+              <v-flex>
+                <v-card-text class="grey--text text-xs-left title">Suggestion Movies</v-card-text>
+              </v-flex>
+            </v-layout>
+            <v-layout row wrap>
+              <v-flex xs2 v-for="i in suggestion" :key="i._id">
+                <div class="vod-content" @click="openMovieDetail(i)">
+                  <img :src="i.medium_cover_image">
+                </div>
+              </v-flex>
+            </v-layout>
         </v-container>
     </div>
 </template>
@@ -89,6 +101,11 @@
 import MovieService from '../components/MovieService'
 export default {
     name: 'detail',
+    data () {
+      return {
+        suggestion: []
+      }
+    },
     computed: {
       movie () {
           return this.$store.getters.movie
@@ -103,7 +120,10 @@ export default {
       }
     },
     created () {
-      console.log(this.movie)
+      MovieService.relatedMovies(this.movie.genres[0]).then((response) => {
+        this.suggestion = response.data
+        console.log(response.data)
+      })
     },
     title () {
       return this.movie

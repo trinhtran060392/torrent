@@ -1,9 +1,16 @@
 <template>
   <div id="app">
     <header class="header">
-      <nav class="inner">
-        
-      </nav>
+      <v-toolbar app fixed clipped-left class="nav-head text-xs-right">
+        <v-toolbar-items class="hidden-sm-and-down text-xs-right">
+          <v-text-field
+            v-model="searchText"
+            label="Search"
+            required class="search"
+            @keyup.enter="search(searchText)">
+          </v-text-field>
+        </v-toolbar-items>
+    </v-toolbar>
     </header>
     <transition name="fade" mode="out-in">
       <router-view class="view"></router-view>

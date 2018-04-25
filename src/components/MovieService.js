@@ -37,6 +37,10 @@ export default new Vue({
                 })
             })
             
+        },
+        relatedMovies (genre) {
+            let uri = `${Constant.api}movies/relate/${genre}`
+            return this.axios.get(uri)
         }
     }
 })
