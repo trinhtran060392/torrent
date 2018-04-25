@@ -29,26 +29,57 @@
                         
                     </v-card-text>
                     <v-card-text>
-                      <v-icon>favorite</v-icon>
+                      <v-layout>
+                        <v-flex xs1>
+                          <v-icon>favorite</v-icon>
+                        </v-flex>
+                        <v-flex xs10 class="text-xs-left">
+                          <span class="ibm">20</span>
+                        </v-flex>
+                      </v-layout>
                     </v-card-text>
                     <v-card-text>
                       <v-layout align-center>
-                        <a :href="movie.imdbLink" target="_blank"><img src="/public/logo-imdb.svg"/></a>
-                        <span class="ibm">{{movie.rating}}</span>
-                        <v-icon>star_rate</v-icon>
+                        <v-flex xs1>
+                          <a :href="movie.imdbLink" target="_blank"><img src="/public/logo-imdb.svg"/></a>
+                        </v-flex>
+                        <v-flex xs10 class="text-xs-left">
+                          <span class="ibm">{{movie.rating}}</span>
+                          <v-icon>star_rate</v-icon>
+                        </v-flex>
                       </v-layout>
                     </v-card-text>
-                    <v-card-text class="grey--text text-xs-left">Summary</v-card-text>
-                    <v-card-text class="text-xs-left">
-                        {{movie.summary}}
+                    <v-card-text>
+                      <v-layout>
+                        <v-flex xs1>
+                          Rating: 
+                        </v-flex>
+                        <v-flex xs10 class="text-xs-left">
+                          {{movie.rating}}
+                        </v-flex>
+                      </v-layout>
                     </v-card-text>
-                    <v-card-text class="grey--text text-xs-left">Detail</v-card-text>
-                    <v-card-text class="text-xs-left">
-                        <p>Rating: {{movie.rating}}</p>
-                        <p>Year: {{movie.year}}</p>
+                    <v-card-text>
+                      <v-layout>
+                        <v-flex xs1>
+                          Year:  
+                        </v-flex>
+                        <v-flex xs10 class="text-xs-left">
+                          {{movie.year}}
+                        </v-flex>
+                      </v-layout>
                     </v-card-text>
                     </v-card>
                 </v-flex>
+            </v-layout>
+            <v-layout row wrap>
+              <v-flex xs7>
+                <v-card-text class="grey--text text-xs-left title">Synopsis</v-card-text>
+                <v-card-text class="text-xs-left">
+                    {{movie.summary}}
+                </v-card-text>
+              </v-flex>
+              <v-flex xs5></v-flex>
             </v-layout>
         </v-container>
     </div>
